@@ -11,11 +11,11 @@ import java.util.Set;
 
 public class Main {
 	/*
-	 *¶ÁÈ¡ÊäÈëÎÄ¼þ£¬³õÊ¼»¯Ò»¸ö°üº¬ÔÚA-planeÖÐµÄËù
-	 *ÓÐÖ÷»úµÄ¼¯ºÏ£¬¼ÇÎªH
-	 *±éÀú¼¯ºÏH£¬ÒÀ´Î¼ÆËãÃ¿¸öÖ÷»úµÄ½©Ê¬µÃ·Ö£¬½«µÃ·ÖÐ¡ÓÚãÐÖµµÄÖ÷»úË¢µô
-	 *¼ÆËãÏàËÆ¶È £¬ÔÙ²ã´Î¾ÛÀà£¨ÔÝÊ±²»Ð´£©
-	 *ÊäÈëÓÐÁ½¸öÎÄ¼þ£¬Ò»¸öÊÇAµÄ½á¹û£¬Ò»¸öÊÇCµÄ½á¹û¡£
+	 *ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A-planeï¿½Ðµï¿½ï¿½ï¿½
+	 *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ÎªH
+	 *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½Ê¬ï¿½Ã·Ö£ï¿½ï¿½ï¿½ï¿½Ã·ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
+	 *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ ï¿½ï¿½ï¿½Ù²ï¿½Î¾ï¿½ï¿½à£¨ï¿½ï¿½Ê±ï¿½ï¿½Ð´ï¿½ï¿½
+	 *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Aï¿½Ä½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Cï¿½Ä½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static void main(String[] args){
 		try {
@@ -25,49 +25,46 @@ public class Main {
 			Set<Host> H = new HashSet<Host>();
 			ArrayList<Set<Host>> Alist = new ArrayList<Set<Host>>();
 			ArrayList<Set<Host>> Clist = new ArrayList<Set<Host>>();
-			//¶ÁA½á¹ûÎÄ¼þ
+			//ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 			int hostIndex = 0;
 			while((line = bReaderA.readLine())!=null){
 				String [] arr = line.split(",");
 				if(hostIndex == 0){
-					//ÎÄ¼þÀï×îºóÒ»ÁÐÊÇ¸ÃÖ÷»úµÄipµØÖ·
-					for(int i = 0;i<arr.length-1;i++){
+					//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ipï¿½ï¿½Ö·
+					for(int i = 0;i<arr.length;i++){
 						Set<Host> aSet = new HashSet<Host>();
 						Alist.add(aSet);
 					}
 				}
-				//Ò»Ìõ¼ÇÂ¼¶ÔÓ¦Ò»¸öÖ÷»ú
-				String ip = arr[arr.length-1];
+				//Ò»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ó¦Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Host host = new Host();
 				host.setID(hostIndex);
-				host.setIp(ip);
-				H.add(host);//¸üÐÂÖ÷»ú¼¯ºÏ
+				H.add(host);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				
-				for(int i = 0;i<arr.length-1;i++){
+				for(int i = 0;i<arr.length;i++){
 					if(Integer.parseInt(arr[i])==1){
 						Alist.get(i).add(host);
 					}
 				}
 				hostIndex++;
 			}
-			//¶ÁC½á¹ûÎÄ¼þ
-			//Á½¸ö½á¹ûÀïµÄÖ÷»úIdÔõÃ´¶ÔÓ¦ÉÏ£¿ip
+			//ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Idï¿½ï¿½Ã´ï¿½ï¿½Ó¦ï¿½Ï£ï¿½ip
 			hostIndex = 0;
 			while((line = bReaderC.readLine())!=null){
 				String [] arr = line.split(",");
 				if(hostIndex == 0){
-					for(int i = 0;i<arr.length-1;i++){
+					for(int i = 0;i<arr.length;i++){
 						Set<Host> aSet = new HashSet<Host>();
 						Clist.add(aSet);
 					}
 				}
-				//Ò»Ìõ¼ÇÂ¼¶ÔÓ¦Ò»¸öÖ÷»ú
-				String ip = arr[arr.length-1];
+				//Ò»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ó¦Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Host host = new Host();
 				host.setID(hostIndex);
-				host.setIp(ip);
-				//´Ë´¦²»Ðè¸üÐÂÖ÷»ú¼¯ºÏ
-				for(int i = 0;i<arr.length-1;i++){
+				
+				//ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				for(int i = 0;i<arr.length;i++){
 					if(Integer.parseInt(arr[i])==1){
 						Clist.get(i).add(host);
 					}
@@ -76,12 +73,12 @@ public class Main {
 			}
 			
 			
-			//¼ÆËãËùÓÐÖ÷»úµÄ½©Ê¬µÃ·Ö
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½Ê¬ï¿½Ã·ï¿½
 			for(Host h: H){
 				double score = botScore(h, Alist, Clist);
 				h.setScore(score);
 			}
-			//¼ÆËãÏàËÆ¶È
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -89,8 +86,8 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-	//¼ÆËãÄ³¸öÖ÷»úµÄ½©Ê¬µÃ·Ö
-	//°üº¬Ö÷»úhËùÓÐAÆ½Ãæ¾ÛÀàµÄ ÏÈ¼ÆËã½»¼¯µÄ¸öÊý£¬ÔÙÇó²¢¼¯µÄ¸öÊý Á½ÕßÏà³ý 
+	//ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½ï¿½Ê¬ï¿½Ã·ï¿½
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½AÆ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È¼ï¿½ï¿½ã½»ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó²¢¼ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	public static double botScore(Host h,ArrayList<Set<Host>> Alist,ArrayList<Set<Host>> Clist){
 		double score = 0;
 		int w = 1;
@@ -123,8 +120,8 @@ public class Main {
 		}
 		return score;
 	}
-	//¼ÆËãÁ½¸öÖ÷»úµÄÏàËÆ¶È
-	//ÏÈ¶ÔÁ½¸öÖ÷»úÉú³ÉÁ½¸ö¶þ½øÖÆÏòÁ¿£¬ÔÙ°´ÕÕ¹«Ê½¼ÆËã
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+	//ï¿½È¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ï¿½Õ¹ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 	public static int similarity(Host h1,Host h2,ArrayList<Set<Host>> AClist,int mb){
 		int sim = 0;
 		StringBuilder host1 = new StringBuilder();
@@ -144,13 +141,13 @@ public class Main {
 		}
 		char [] c1 = host1.toString().toCharArray();
 		char [] c2 = host2.toString().toCharArray();
-		//¶ÔÓ¦Ê½×ÓµÄÇ°°ë²¿·Ö
+		//ï¿½ï¿½Ó¦Ê½ï¿½Óµï¿½Ç°ï¿½ë²¿ï¿½ï¿½
 		for(int i = 0;i<mb;i++){
 			if(c1[i] == c2[i]){
 				sim++;
 			}
 		}
-		//ºó°ë²¿·Ö
+		//ï¿½ï¿½ë²¿ï¿½ï¿½
 		int temp = 0;
 		for(int i = mb;i<AClist.size();i++){
 			if(c1[i] == c2[i]){
