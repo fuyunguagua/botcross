@@ -4,9 +4,9 @@ import java.util.Set;
 public class Test {
 	public static void main(String[] args) {
 		Host h1 = new Host();
-		h1.setIp("10,10,10,1");
+		h1.setID(1);
 		Host h2 = new Host();
-		h2.setIp("10,10,10,2");
+		h2.setID(2);
 		Host h3 = new Host();
 		h3.setIp("10,10,10,2");
 		Host h4 = new Host();
@@ -40,7 +40,7 @@ public class Test {
 		s2.add(h7);
 		s2.add(h8);
 		System.out.println(s1);
-		s1.retainAll(s2);//½»¼¯
+		s1.retainAll(s2);//ï¿½ï¿½ï¿½ï¿½
 		System.out.println(s1);
 	}
 }

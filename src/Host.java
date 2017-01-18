@@ -1,7 +1,7 @@
 
 public class Host{
 	private int ID;
-	private double score;//½©Ê¬µÃ·Ö
+	private double score;//ï¿½ï¿½Ê¬ï¿½Ã·ï¿½
 	private String ip;
 	public String getIp() {
 		return ip;
@@ -32,12 +32,7 @@ public class Host{
 	}
 	@Override
 	public int hashCode() {
-		char [] arr = this.getIp().toCharArray();
-		int code = 0;
-		for(int i =0;i<arr.length;i++){
-			code += (int)arr[i];
-		}
-		return code;
+		return ID;
 	}
 	
 }
