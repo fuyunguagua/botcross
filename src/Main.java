@@ -12,13 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Main {
-	/*
-	 *��ȡ�����ļ�����ʼ��һ��������A-plane�е���
-	 *�������ļ��ϣ���ΪH
-	 *��������H�����μ���ÿ�������Ľ�ʬ�÷֣����÷�С����ֵ������ˢ��
-	 *�������ƶ� ���ٲ�ξ��ࣨ��ʱ��д��
-	 *�����������ļ���һ����A�Ľ����һ����C�Ľ����
-	 */
+
 	private static int a = 0;
 	public static void main(String[] args){
 		try {
@@ -63,16 +57,16 @@ public class Main {
 		while((line = bReaderA.readLine())!=null){
 			String [] arr = line.split(",");
 			if(hostIndex == 0){
-				//�ļ������һ���Ǹ�������ip��ַ
+				
 				for(int i = 0;i<arr.length;i++){
 					Set<Host> aSet = new HashSet<Host>();
 					Alist.add(aSet);
 				}
 			}
-			//һ����¼��Ӧһ������
+			
 			Host host = new Host();
 			host.setID(hostIndex);
-			H.add(host);//������������
+			H.add(host);
 			
 			for(int i = 0;i<arr.length;i++){
 				if(Integer.parseInt(arr[i])==1){
@@ -83,8 +77,7 @@ public class Main {
 		}
 		bReaderA.close();
 	}
-	//����ĳ�������Ľ�ʬ�÷�
-	//��������h����Aƽ������ �ȼ��㽻���ĸ��������󲢼��ĸ��� ������� 
+
 	public static double botScore(Host h,ArrayList<Set<Host>> Alist,ArrayList<Set<Host>> Clist){
 		double score = 0;
 		int w = 1;
@@ -140,8 +133,8 @@ public class Main {
 	}
 	public static void getAllBotScore(Set<Host> H, ArrayList<Set<Host>> Alist, ArrayList<Set<Host>> Clist) {
 		for(Host h: H){		
-			ArrayList<Set<Host>> TempAlist = new ArrayList<Set<Host>>();//包含主机h的所有A集合
-			ArrayList<Set<Host>> TempClist = new ArrayList<Set<Host>>();//包含主机h的所有C集合	
+			ArrayList<Set<Host>> TempAlist = new ArrayList<Set<Host>>();
+			ArrayList<Set<Host>> TempClist = new ArrayList<Set<Host>>();
 			for(Set<Host> set:Alist){
 				if (set.contains(h)) {
 					TempAlist.add(set);
@@ -157,8 +150,7 @@ public class Main {
 			h.setScore(score);
 		}
 	}
-	//�����������������ƶ�
-	//�ȶ������������������������������ٰ��չ�ʽ����
+
 	public static int similarity(Host h1,Host h2,ArrayList<Set<Host>> AClist,int mb){
 		int sim = 0;
 		StringBuilder host1 = new StringBuilder();
@@ -178,13 +170,13 @@ public class Main {
 		}
 		char [] c1 = host1.toString().toCharArray();
 		char [] c2 = host2.toString().toCharArray();
-		//��Ӧʽ�ӵ�ǰ�벿��
+		
 		for(int i = 0;i<mb;i++){
 			if(c1[i] == c2[i]){
 				sim++;
 			}
 		}
-		//��벿��
+		
 		int temp = 0;
 		for(int i = mb;i<AClist.size();i++){
 			if(c1[i] == c2[i]){
