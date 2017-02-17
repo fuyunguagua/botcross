@@ -19,6 +19,7 @@ public class Main {
 	 *�������ƶ� ���ٲ�ξ��ࣨ��ʱ��д��
 	 *�����������ļ���һ����A�Ľ����һ����C�Ľ����
 	 */
+	private static int a = 0;
 	public static void main(String[] args){
 		try {
 			Set<Host> H = new HashSet<Host>();
@@ -26,6 +27,9 @@ public class Main {
 			ArrayList<Set<Host>> Clist = new ArrayList<Set<Host>>();
 			getAlist(Alist, H);
 			getClist(Clist);
+			//System.out.println(Alist.size());
+			//System.out.println(Clist.size());
+
 			getAllBotScore(H,Alist,Clist);
 			outputScoreToFile(H);
 			
@@ -50,6 +54,7 @@ public class Main {
 			host.setID(Integer.parseInt(arr[1])-1);
 			Clist.get(Clist.size()-1).add(host);
 		}
+		bReaderC.close();
 	}
 	public static void getAlist(ArrayList<Set<Host>> Alist, Set<Host> H) throws NumberFormatException, IOException{
 		BufferedReader bReaderA = new BufferedReader(new InputStreamReader( new FileInputStream(new File("AResult.csv"))));
@@ -76,6 +81,7 @@ public class Main {
 			}
 			hostIndex++;
 		}
+		bReaderA.close();
 	}
 	//����ĳ�������Ľ�ʬ�÷�
 	//��������h����Aƽ������ �ȼ��㽻���ĸ��������󲢼��ĸ��� ������� 
@@ -92,10 +98,12 @@ public class Main {
 				Set<Host> union = new HashSet<Host>();
 				union.addAll(Ai);
 				union.addAll(Aj);
-				score += w*w*intersection.size()/union.size();
+				score += w*w*(((double)intersection.size())/union.size());
+				
+				
 			}
 		}
-		
+		System.out.print(++a+" "+score);
 		for(int i = 0;i<Alist.size();i++){
 			Set<Host> Ai = Alist.get(i);
 			for(int k=0;k<Clist.size();k++){
@@ -106,9 +114,11 @@ public class Main {
 				Set<Host> union = new HashSet<Host>();
 				union.addAll(Ai);
 				union.addAll(Ck);
-				score += w*intersection.size()/union.size();
+				score += w*(((double)intersection.size())/union.size());
+				
 			}
 		}
+		System.out.println("__"+score);
 		return score;
 	}
 	public static void outputScoreToFile(Set<Host> H){
@@ -137,6 +147,7 @@ public class Main {
 					TempAlist.add(set);
 				}
 			}
+			//System.out.println(Clist.size());
 			for(Set<Host> set:Clist){
 				if (set.contains(h)) {
 					TempClist.add(set);

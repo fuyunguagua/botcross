@@ -24,7 +24,7 @@ public class Host{
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Host){
-			if(this.ip.equals(((Host)obj).getIp())){
+			if(this.ID == ((Host)obj).getID()){
 				return true;
 			}
 		}
